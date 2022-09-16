@@ -56,7 +56,8 @@ while True:
     #trans = utils.four_point_transform(frame, pts)
 
     # Define ROI
-    roi = frame[211:358, 166:627]
+    gx1, gx2, gy1, gy2 = 166, 627, 211, 358
+    roi = frame[gy1:gy2, gx1:gx2]
 
     bounding = cv.rectangle(frame, (166, 211), (627, 358), (255, 255, 255), 2)
 
@@ -64,6 +65,11 @@ while True:
     # Grayscale frames in ROI
     #
     gray = cv.cvtColor(roi, cv.COLOR_BGR2GRAY)
+
+    #
+    # BGR to HSV
+    #
+    hsv = cv.cvtColor(frame, cv.COLOR_BGR2HSV)
 
     #
     # Gaussian blur the grayscale
@@ -79,6 +85,7 @@ while True:
     # Canny detection
     #
     canny = cv.Canny(blur, 50, 150)
+    #cv.erode(canny, (2, 2), canny)
 
     #
     # Line detection using canny
@@ -89,7 +96,7 @@ while True:
 
     for line in lines:
         for x1,y1,x2,y2 in line:
-            cv.line(line_disp,(x1,y1),(x2,y2),(255,0,0), 5)
+            cv.line(line_disp,(x1+gx1,y1+gy1),(x2+gx2,y2+gy2),(255,0,0), 5)
 
     #
     # Binary thresholding
@@ -103,34 +110,30 @@ while True:
     sobel = cv.Sobel(thresh, cv.CV_64F, 0, 1, 3)
 
     #
-    # Detect blobs
-    #
-    detector = cv.SimpleBlobDetector()
-
-    keypoints = detector.detect(gray)
-
-    #
     # Contour detection
     #
     cnts = cv.findContours(thresh, cv.RETR_TREE, cv.CHAIN_APPROX_SIMPLE)
     cnts = cnts[0] if len(cnts) == 2 else cnts[1]
 
-    for cnt in cnts:
-        if (cv.contourArea(cnt) > 75):
+    for i in range(len(cnts)):
+        cnt = cnts[i]
+        if (cv.contourArea(cnt) > 75):            
             (x,y,w,h) = cv.boundingRect(cnt)
-            cv.rectangle(trans, (x,y), (x+w, y+h), (0,0,255), 2)
+            cv.rectangle(frame, (x+gx1,y+gy1), ((x+gx1)+w, (y+gy1)+h), (0,0,255), 2)
+            cv.putText(frame, "Lane Line", (x, y), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1)
 
-    cv.drawContours(trans, cnts, -1, (0, 255, 0), 1)
+    cv.drawContours(frame, cnts, -1, (0, 255, 0), 1)
 
-    lines_edge = cv.addWeighted(frame, 0.8, line_disp, 1, 0)
+    lines_edge = cv.addWeighted(frame, 0.8, frame, 1, 0)
 
     cv.imshow('Frame', frame)
     #cv.imshow('Draw', draw)
     cv.imshow('Mask', mask1)
     cv.imshow('Gray', gray)
+    cv.imshow('HSV', hsv)
     cv.imshow('Blur', blur)
     cv.imshow('Canny', canny)
-    cv.imshow('Perspective Transformed', trans)
+    #cv.imshow('Perspective Transformed', trans)
     #cv.imshow('Lines', lines_edge)
     cv.imshow('ROI', roi)
     cv.imshow('Bin Thresh', thresh)
