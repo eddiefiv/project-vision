@@ -1,0 +1,147 @@
+// EXTENSIONS:
+// Customize UI
+// Editor Navigation Items
+// Moxer Icons
+// Trailing Space
+// Carbon Product Icons
+// Vibe (theme)
+{
+    //UNECESSARY FOR THE SETUP
+    "files.exclude": {
+        "**/.next": true,
+        "node_modules": false,
+        ".parcel-cache": false,
+        "package-lock.json": false,
+        "pnpm-lock.yaml": false
+    },
+    "files.associations": {
+        "*.rmd": "markdown"
+    },
+    //RECOMMEDED
+    "workbench.tree.indent": 8,
+    "workbench.colorTheme": "Vibe",
+    "workbench.iconTheme": "moxer-icons",
+    "workbench.editor.showTabs": true,
+    "workbench.productIconTheme": "icons-carbon",
+    "workbench.list.smoothScrolling": true,
+    "workbench.statusBar.visible": false,
+    //NECESSARY TO PLAY ALONG WIHT THE THEME
+    "workbench.colorCustomizations": {
+        "focusBorder": "#ff000000",
+        "scrollbar.shadow": "#ffffff00",
+        "widget.shadow": "#ffffff00",
+        "list.activeSelectionBackground": "#10101000",
+        "list.inactiveSelectionBackground": "#10101000",
+        "list.inactiveSelectionForeground": "#1DF3FC",
+        "sideBar.border": "#ffffff28",
+        "editorCursor.foreground": "#DEC0E9",
+        "workbench.statusBar.visible": false,
+        "workbench.iconTheme": "moxer-icons",
+        "workbench.colorTheme": "Vibe",
+        "workbench.editor.showTabs": false,
+        "workbench.list.smoothScrolling": true,
+        "scrollbarSlider.background": "#0000001a",
+        "minimapSlider.background": "#0000001a",
+        "scrollbarSlider.hoverBackground": "#00000028",
+        "minimapSlider.hoverBackground": "#00000028",
+        "scrollbarSlider.activeBackground": "#00000028",
+        "minimapSlider.activeBackground": "#00000028",
+        "minimap.errorHighlight": "#ff0000",
+        "minimap.selectionHighlight": "#090909a3",
+        "editor.lineHighlightBorder": "#DEC0E9",
+        "editorOverviewRuler.background": "#161618",
+        "terminal.background": "#161618",
+        "peekViewEditor.background": "#161618",
+        "peekView.border": "#ffffff28",
+        "peekViewEditor.matchHighlightBorder": "#12131500",
+        "peekViewEditor.matchHighlightBackground": "#12131500",
+        "peekViewResult.background": "#161618",
+        "peekViewResult.selectionForeground": "#161618",
+        "peekViewResult.fileForeground": "#161618",
+        "peekViewResult.selectionBackground": "#161618",
+        "peekViewResult.matchHighlightBackground": "#12131500",
+        "peekViewResult.lineForeground": "#ffffff7b",
+        "peekViewTitle.background": "#121315",
+        "peekViewEditorGutter.background": "#161618",
+        "editorOverviewRuler.border": "#12131500",
+    },
+    "editor.fontFamily": "SF Mono",
+    "editor.fontWeight": "bold",
+    "editor.accessibilitySupport": "off",
+    "editor.autoClosingBrackets": "always",
+    "editor.padding.top": 15,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.inlineSuggest.enabled": true,
+    "editor.formatOnSave": true,
+    "editor.scrollbar.verticalScrollbarSize": 12,
+    "editor.scrollbar.vertical": "hidden",
+    "editor.scrollbar.horizontal": "hidden",
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.codeLensFontFamily": "Proto Mono Bold",
+    "editor.minimap.scale": 2,
+    "editor.fontLigatures": true,
+    "editor.fontSize": 13,
+    "editor.minimap.renderCharacters": false,
+    "editor.lineHeight": 1.8,
+    "editor.scrollBeyondLastLine": false,
+    "editor.renderWhitespace": "boundary",
+    "editor.minimap.size": "fill",
+    "editor.smoothScrolling": true,
+    "editor.rulers": [],
+    "editor.lineNumbers": "on",
+    "editor.renderLineHighlight": "gutter",
+    "editor.cursorBlinking": "phase",
+    "editor.cursorWidth": 3,
+    "editor.guides.bracketPairs": "active",
+    "editor.guides.bracketPairsHorizontal": false,
+    "editor.unicodeHighlight.allowedCharacters": {
+        "ˆ": true
+    },
+    "terminal.integrated.fontFamily": "SF Mono, monospace",
+    "terminal.integrated.cursorStyle": "line",
+    "terminal.integrated.gpuAcceleration": "on",
+    "terminal.integrated.fontSize": 14,
+    "terminal.integrated.smoothScrolling": true,
+    "search.useGlobalIgnoreFiles": true,
+    "search.exclude": {
+        "**/node_modules": false,
+        "node_modules": true,
+        "yarn.lock": true
+    },
+    //MAIN CSS CHANGES TO CHANGE THE LAYOUT [ IF WINDOWS ] the first two options (titlebar) not supported (remove)
+    "customizeUI.listRowHeight": 35,
+    "customizeUI.activityBar": "bottom",
+    "customizeUI.activityBarHideSettings": true,
+    "customizeUI.stylesheet": {
+        //sidebar folder/file icon & text size
+        ".monaco-editor .margin-view-overlays .current-line-margin": "border-right: none !important; border-top: none !important; border-bottom: none !important; border-left: 3px solid #DEC0E9 ",
+        ".monaco-workbench .part > .content .folder-icon": "font-size: 14px !important; font-weight: bold;",
+        ".monaco-workbench .part > .content .file-icon": "font-size: 14px !important;",
+        ".monaco-pane-view .monaco-split-view2.vertical>.monaco-scrollable-element.mac": "height: calc(100% - 90px) !important;",
+        ".monaco-split-view2.vertical>.monaco-scrollable-element.mac>.split-view-container>.split-view-view.visible>.part.sidebar.left>.content": "height: 100vh !important",
+        "div.monaco-grid-view > div > div > div.monaco-scrollable-element.mac > div.split-view-container > div.split-view-view.visible > div > div > div.monaco-scrollable-element.mac > div.split-view-container > div:nth-child(1) > div > div > div.monaco-scrollable-element.mac > div.split-view-container > div:nth-child(2)": "bottom: 0px !important; top: unset !important; height: 48px !important",
+        ".monaco-pane-view .monaco-scrollable-element.mac > div.split-view-container > div:not(:first-child)": "transform: translateY(-20px) !important",
+        ".part.activitybar.left": "background-color: unset !important",
+        "body.activity-bar-at-bottom .monaco-workbench .activitybar > .content .composite-bar": "margin-left: 0 !important",
+        "body.inline-title-bar .part>.title>.title-actions .action-label": "min-width: unset !important",
+        ".monaco-workbench .part.sidebar>.title>.title-label h2": "display: none;",
+        ".part.activitybar.left.bordered": "border: 1px solid transparent!important",
+        ".activitybar .composite-bar > .monaco-action-bar": "padding: 0 10px 0 6px",
+        //activity bar rounded border
+        ".activitybar .composite-bar > .monaco-action-bar > .actions-container": " justify-content: space-evenly; max-width: 300px; border: 1px solid #ffffff28; border-radius: 6px",
+        ".pane-header": "padding-left: 10px;",
+        "body.activity-bar-at-bottom .monaco-workbench .activitybar > .content": "flex-direction: column !important"
+    },
+    //IRELEVANT
+    "scm.diffDecorationsIgnoreTrimWhitespace": "true",
+    "git.autofetch": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "scss.lint.unknownAtRules": "ignore",
+    "css.lint.unknownAtRules": "ignore",
+    "svelte.enable-ts-plugin": true,
+    "svelte.plugin.svelte.note-new-transformation": false,
+    "terminal.integrated.env.osx": {
+        "FIG_NEW_SESSION": "1"
+    },
+    "git.enableSmartCommit": true,
+}
