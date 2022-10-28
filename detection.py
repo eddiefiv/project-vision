@@ -2,6 +2,7 @@ import cv2 as cv
 import numpy as np
 import argparse
 import utils
+import time
 
 capture = cv.VideoCapture('Videos/Clean Driving.mp4')
 
@@ -14,6 +15,11 @@ args = vars(ap.parse_args())
 def mouse_click(event, x, y, flags, params):
     if event == cv.EVENT_LBUTTONDOWN:
         print(x, ', ', y)
+
+new_frame_time = 0
+prev_frame_time = 0
+
+font = cv.FONT_HERSHEY_SIMPLEX
 
 while True:
     ret, frame = capture.read()
@@ -117,7 +123,7 @@ while True:
 
     for i in range(len(cnts)):
         cnt = cnts[i]
-        if (cv.contourArea(cnt) > 75):            
+        if (cv.contourArea(cnt) > 75):
             (x,y,w,h) = cv.boundingRect(cnt)
             cv.rectangle(frame, (x+gx1,y+gy1), ((x+gx1)+w, (y+gy1)+h), (0,0,255), 2)
             cv.putText(frame, "Lane Line", (x, y), cv.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1)
@@ -126,18 +132,32 @@ while True:
 
     lines_edge = cv.addWeighted(frame, 0.8, frame, 1, 0)
 
+    #
+    # Frame deltatime calculation
+    #
+    new_frame_time = time.time()
+
+    fps = 1/(new_frame_time-prev_frame_time)
+    prev_frame_time = new_frame_time
+
+    fps = int(fps)
+
+    fps = str(fps)
+
+    cv.putText(frame, fps, (7, 70), font, 3, (100, 255, 0), 3, cv.LINE_AA)
+
     cv.imshow('Frame', frame)
     #cv.imshow('Draw', draw)
-    cv.imshow('Mask', mask1)
-    cv.imshow('Gray', gray)
-    cv.imshow('HSV', hsv)
-    cv.imshow('Blur', blur)
-    cv.imshow('Canny', canny)
+    #cv.imshow('Mask', mask1)
+    #cv.imshow('Gray', gray)
+    #cv.imshow('HSV', hsv)
+    #cv.imshow('Blur', blur)
+    #cv.imshow('Canny', canny)
     #cv.imshow('Perspective Transformed', trans)
     #cv.imshow('Lines', lines_edge)
-    cv.imshow('ROI', roi)
-    cv.imshow('Bin Thresh', thresh)
-    cv.imshow('Sobel', sobel)
+    #cv.imshow('ROI', roi)
+    #cv.imshow('Bin Thresh', thresh)
+    #cv.imshow('Sobel', sobel)
 
     cv.setMouseCallback('Frame', mouse_click)
 
