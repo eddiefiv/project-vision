@@ -1,0 +1,16 @@
+class NeuralNetwork {
+    function __init__(self) {
+        // Define inital variables and Neural Network layers
+    }
+
+    function forward(input) {
+        // Propogate forwards in the next layer with the input data
+    }
+}
+
+model = NeuralNetwork(input_image)
+// Allows the Neural Network to be tested
+model.eval()
+
+// Gets the models predicted percentage
+output = model.max()
