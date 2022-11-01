@@ -1,10 +1,19 @@
 class NeuralNetwork {
     function __init__(self) {
         // Define inital variables and Neural Network layers
+        layer1 = // Convolutional, rectified linear unit (ReLU), and batch normalization functions per layer
+        layer2 = // Same as above
+        layer3 = // Same as above
     }
 
     function forward(input) {
-        // Propogate forwards in the next layer with the input data
+        // Propogate forwards in the next layer with the input data by randomizing weights for each layer
+        error = // Calculate the difference between the actual value and the predicted weight value
+    }
+
+    function backward(input) {
+        // Propogate backwards in the previous layer using the newer weights determined by the error value
+        // from the forward propogation
     }
 }
 
