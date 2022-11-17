@@ -17,6 +17,8 @@ class NeuralNetwork {
     }
 }
 
+// Capture an image from the camera and input the immage to the Neural NetworkS
+input_image = picamera.capture()
 model = NeuralNetwork(input_image)
 // Allows the Neural Network to be tested
 model.eval()
